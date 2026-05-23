@@ -1,11 +1,83 @@
-<Application x:Class="Nha_Hang_Huit.App"
+﻿<Application x:Class="Nha_Hang_Huit.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="Views/LoginView.xaml">
+             xmlns:converters="clr-namespace:Nha_Hang_Huit.Converters"
+             StartupUri="Views/LoginView.xaml"
+             xml:lang="vi-VN">
     <Application.Resources>
         <ResourceDictionary>
-            <FontFamily x:Key="AppFont">Segoe UI</FontFamily>
-            <converters:BoolToVisibilityConverter x:Key="BoolToVis" xmlns:converters="clr-namespace:Nha_Hang_Huit.Converters"/>
+            <!-- Font ho tro tieng Viet: Arial la font pho bien nhat -->
+            <FontFamily x:Key="AppFont">Arial</FontFamily>
+
+            <!-- Converters -->
+            <converters:BoolToVisibilityConverter x:Key="BoolToVis"/>
+            <converters:InvertBoolToVisibilityConverter x:Key="InvertBoolToVis"/>
+
+            <!-- Mau sac chu dao -->
+            <SolidColorBrush x:Key="ColorPrimary" Color="#7B2D2D"/>
+            <SolidColorBrush x:Key="ColorPrimaryDark" Color="#5C1F1F"/>
+            <SolidColorBrush x:Key="ColorAccent" Color="#D4A017"/>
+            <SolidColorBrush x:Key="ColorAccentHover" Color="#B8860B"/>
+            <SolidColorBrush x:Key="ColorBackground" Color="#FDF5E6"/>
+            <SolidColorBrush x:Key="ColorSurface" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="ColorTextPrimary" Color="#212121"/>
+            <SolidColorBrush x:Key="ColorTextSecondary" Color="#5D4037"/>
+            <SolidColorBrush x:Key="ColorSuccess" Color="#2E7D32"/>
+            <SolidColorBrush x:Key="ColorWarning" Color="#E65100"/>
+            <SolidColorBrush x:Key="ColorGoldLight" Color="#FFF8E1"/>
+            <SolidColorBrush x:Key="ColorBrownLight" Color="#EFEBE9"/>
+
+            <!-- ===== IMPLICIT STYLES (ap dung cho TOAN BO ung dung) ===== -->
+            <Style TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}"/>
+                <Setter Property="Foreground" Value="{StaticResource ColorTextPrimary}"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}"/>
+                <Setter Property="Foreground" Value="{StaticResource ColorTextPrimary}"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="PasswordBox">
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Padding" Value="12,6"/>
+                <Setter Property="Cursor" Value="Hand"/>
+            </Style>
+            <Style TargetType="ListBox">
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <Style TargetType="ComboBox">
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <Style TargetType="DataGrid">
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="AutoGenerateColumns" Value="False"/>
+                <Setter Property="HeadersVisibility" Value="Column"/>
+                <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            </Style>
+            <Style TargetType="ListBoxItem">
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <Style TargetType="ComboBoxItem">
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

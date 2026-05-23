@@ -1,0 +1,116 @@
+﻿<Window x:Class="Nha_Hang_Huit.Views.InvoiceHistoryView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Lịch sử hóa đơn - Nhà Hàng HUIT"
+        WindowStartupLocation="CenterScreen"
+        Width="950" Height="600" WindowStyle="ToolWindow"
+        FontFamily="{StaticResource AppFont}"
+        TextOptions.TextFormattingMode="Display"
+        xml:lang="vi-VN">
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#E8F5E9" Offset="0"/>
+            <GradientStop Color="#F5F5F5" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#2E7D32" CornerRadius="6" Padding="14,8" Margin="0,0,0,8">
+            <TextBlock Text="&#x1F4CB; LICH SU HOA DON" FontSize="18" FontWeight="Bold" Foreground="White"/>
+        </Border>
+
+        <!-- Date filter -->
+        <Border Grid.Row="1" Background="White" CornerRadius="6" Padding="10" Margin="0,0,0,6">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Text="Tu ngay:" VerticalAlignment="Center" FontSize="13" Margin="0,0,8,0"/>
+                <DatePicker SelectedDate="{Binding TuNgay}" Width="130" FontSize="13" Margin="0,0,10,0"/>
+                <TextBlock Text="Den ngay:" VerticalAlignment="Center" FontSize="13" Margin="0,0,8,0"/>
+                <DatePicker SelectedDate="{Binding DenNgay}" Width="130" FontSize="13" Margin="0,0,10,0"/>
+                <Button Content="LOC" Height="30" Width="70"
+                        Command="{Binding LocCommand}"
+                        Background="#1565C0" Foreground="White"
+                        BorderThickness="0" Cursor="Hand" FontSize="12" FontWeight="Bold">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="4" Padding="10,4">
+                                            <ContentPresenter HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <!-- Summary bar -->
+        <Border Grid.Row="2" Background="#E8F5E9" CornerRadius="6" Padding="10" Margin="0,0,0,6">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding TongHoaDonText}" FontSize="14" FontWeight="Bold" Foreground="#2E7D32" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="{Binding TongDoanhThuText}" FontSize="14" FontWeight="Bold" Foreground="#E65100" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="2" Text="{Binding TongGiamGiaText}" FontSize="14" FontWeight="Bold" Foreground="#C62828" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="3" Text="{Binding TongThucNhanText}" FontSize="14" FontWeight="Bold" Foreground="#2E7D32" HorizontalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- Invoice list -->
+        <Border Grid.Row="3" Background="White" CornerRadius="6" Padding="2">
+            <DataGrid ItemsSource="{Binding InvoiceList}"
+                      AutoGenerateColumns="False" IsReadOnly="True"
+                      HeadersVisibility="Column" RowHeaderWidth="0"
+                      BorderThickness="0" FontSize="13"
+                      AlternatingRowBackground="#F5F5F5"
+                      SelectionMode="Single">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Ma HD" Binding="{Binding MaHoaDon}" Width="70"/>
+                    <DataGridTextColumn Header="Ngay" Binding="{Binding NgayTao}" Width="130"/>
+                    <DataGridTextColumn Header="Khach hang" Binding="{Binding KhachHang}" Width="130"/>
+                    <DataGridTextColumn Header="Tong tien" Binding="{Binding TongTienDisplay}" Width="120"/>
+                    <DataGridTextColumn Header="Giam gia" Binding="{Binding GiamGiaDisplay}" Width="110"/>
+                    <DataGridTextColumn Header="Thanh toan" Binding="{Binding ThanhToanDisplay}" Width="130"/>
+                    <DataGridTextColumn Header="Hinh thuc" Binding="{Binding PhuongThucTT}" Width="100"/>
+                    <DataGridTextColumn Header="Ca" Binding="{Binding MaCa}" Width="60"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <!-- Close button -->
+        <Button Grid.Row="4" Content="DONG" Height="36" Width="120" Margin="0,8,0,0"
+                Command="{Binding DongCommand}"
+                Background="#757575" Foreground="White"
+                BorderThickness="0" Cursor="Hand" FontSize="13" FontWeight="Bold"
+                HorizontalAlignment="Right">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" CornerRadius="5" Padding="12,5">
+                                    <ContentPresenter HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</Window>
